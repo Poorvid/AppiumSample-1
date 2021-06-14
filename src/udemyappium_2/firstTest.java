@@ -17,20 +17,17 @@ public class firstTest {
 	{
 		
 
-	AndroidDriver<AndroidElement>  driver;
-	File f=new File("src");
-		File fs=new File(f,"ApiDemos-debug.apk");
-		
-		
+		File appDir=null;
+
+		AndroidDriver<AndroidElement> driver;
+		appDir = new File("C:\\Users\\sopan.sagorkar\\git\\AppiumSample-1\\ApiDemos-debug.apk"); 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,"Android");
 		capabilities.setCapability(MobileCapabilityType.VERSION, "11.0");
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
-		//capabilities.setCapability(MobileCapabilityType.UDID, "emulator-1");
-		//capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "sampleemulator_2");
-	//	capabilities.setCapability(MobileCapabilityType.APP, fs.getAbsolutePath());//fs.getAbsolutePath to avoid hard coding of path
-		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"uiautomator2");
-		driver=new AndroidDriver<> (new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+		capabilities.setCapability(MobileCapabilityType.APP, appDir.getAbsolutePath());
+		driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		
